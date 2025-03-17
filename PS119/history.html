@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psalm 119 National Values Challenge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #2bd3e2, #001182, #537abc);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        /* Book Opening Animation */
+        .book-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            perspective: 1500px;
+        }
+
+        .book {
+            width: 300px;
+            height: 400px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: openBook 2s forwards;
+        }
+
+        @keyframes openBook {
+            0% {
+                transform: rotateY(0deg) scale(0.8);
+                opacity: 0.5;
+            }
+            100% {
+                transform: rotateY(180deg) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .book-page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            backface-visibility: hidden;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        .book-front {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            animation: titlePulse 2s infinite alternate;
+        }
+
+        @keyframes titlePulse {
+            from {transform: scale(1);}
+            to {transform: scale(1.05);}
+        }
+
+        .book-back {
+            transform: rotateY(180deg);
+            display: none;
+        }
+
+        /* Main Content Styles */
+        .content {
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        .content.show {
+            opacity: 1;
+        }
+
+        .page-section {
+            min-height: 100vh;
+            padding: 50px 10%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .page-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            transform: skewX(-15deg);
+            z-index: -1;
+        }
+
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            color: transparent;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .section-content {
+            background: rgba(255,255,255,0.9);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .image-placeholder {
+            max-width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            border-radius: 15px;
+            color: white;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 1s ease;
+        }
+   /* Section styling with zigzag layout */
+   .page-section {
+            margin: 60px 0;
+            padding: 20px;
+        }
+        
+        /* Zigzag pattern - alternating left and right alignment */
+        .page-section:nth-child(even) {
+            margin-right: 10%;
+        }
+        
+        .page-section:nth-child(even) {
+            margin-left: 10%;
+        }
+        
+        .section-title {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        /* Scroll Trigger Animations */
+        .section-title.active,
+        .section-content.active,
+        .image-placeholder.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        @media (max-width: 768px) {
+            .page-section {
+                padding: 30px 5%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f4c81 0%, #1a237e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin: 0 15px;
+            position: relative;
+        }
+        
+        .nav-item a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            padding: 8px 0;
+        }
+        
+        .nav-item a:hover {
+            color: #ffffff;
+        }
+        
+        /* Animated underline effect */
+        .nav-item a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-item a:hover::after {
+            width: 100%;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-partner {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .btn-register {
+            background: #00bcd4;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-partner:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .btn-register:hover {
+            background: #00acc1;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 188, 212, 0.5);
+        }
+        
+        /* Mobile menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: block;
+                z-index: 100;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 80%;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 25px;
+                background: linear-gradient(135deg, #0f4c81 0%, #1a237e 100%);
+                transition: right 0.5s ease;
+                z-index: 99;
+            }
+            
+            .nav-active {
+                right: 0;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                margin-top: 20px;
+            }
+            
+            /* Hamburger animation */
+            .toggle .line1 {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .toggle .line2 {
+                opacity: 0;
+            }
+            
+            .toggle .line3 {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            .nav-item {
+                opacity: 0;
+                transform: translateX(50px);
+                animation: navItemFade 0.5s forwards;
+                animation-delay: calc(0.1s * var(--i));
+            }
+            
+            @keyframes navItemFade {
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">PSALM 119</div>
+        
+        <ul class="nav-links">
+            <li class="nav-item" style="--i:1"><a href="homepage.html" class="nav-link">Home</a></li>
+            <li class="nav-item" style="--i:2"><a href="about.html" class="nav-link">About Us</a></li>
+            <li class="nav-item" style="--i:3"><a href="testimonies.html" class="nav-link">Testimonies</a></li>
+            <li class="nav-item" style="--i:4"><a href="contact.html" class="nav-link">Contact</a></li>
+            
+            <div class="btn-group">
+                <button class="btn btn-partner" style="--i:5">Partner</button>
+                <button class="btn btn-register" style="--i:6">Register Now</button>
+            </div>
+        </ul>
+        
+        <div class="hamburger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+    
+    <script>
+        // Mobile navigation toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const navItems = document.querySelectorAll('.nav-item');
+        const btnGroup = document.querySelector('.btn-group');
+
+        hamburger.addEventListener('click', () => {
+            // Toggle navigation
+            navLinks.classList.toggle('nav-active');
+            
+            // Animate hamburger
+            hamburger.classList.toggle('toggle');
+            
+            // Animate nav items with delay
+            navItems.forEach((item, index) => {
+                if (item.style.animation) {
+                    item.style.animation = '';
+                } else {
+                    item.style.animation = `navItemFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+            
+            // Animate buttons
+            const buttons = btnGroup.querySelectorAll('.btn');
+            buttons.forEach((button, index) => {
+                if (button.style.animation) {
+                    button.style.animation = '';
+                } else {
+                    button.style.animation = `navItemFade 0.5s ease forwards ${(index + navItems.length) / 7 + 0.3}s`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+    </style>
+</head>
+<body>
+    <!-- Book Opening Animation -->
+    <div class="book-container">
+        <div class="book">
+            <div class="book-page book-front">
+                <h1>Psalm 119</h1>
+                <h2>National Values Challenge</h2>
+            </div>
+            <div class="book-page book-back"></div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <style>
+            .image-placeholder {
+          width: 100%;
+          height: 300px;
+          background: #ddd; /* Fallback if image fails */
+          margin: 20px 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #666;
+          font-style: italic;
+          border: 1px dashed #999;
+          object-fit: cover; /* Added for images */
+        }
+        
+        @media (max-width: 768px) {
+          .image-placeholder {
+            height: 200px;
+          }
+        }
+          </style>
+        <!-- Sections remain the same as previous version -->
+        <section id="birth" class="page-section">
+            <h2 class="section-title">The Birth</h2>
+            <div class="section-content">
+                <p>The Psalm 119 National Values Challenge emerged from a vision to inspire and transform communities through deep engagement with timeless values. Born out of a desire to connect people with meaningful principles, the challenge seeks to bridge generations and cultures.</p>
+                <div class="image-placeholder">Image of Origin</div>
+            </div>
+        </section>
+
+ <!-- The Manifest Section -->
+ <section id="manifest" class="page-section">
+    <h2 class="section-title">The Manifest</h2>
+    <div class="section-content">
+        <p>Our manifesto is rooted in the belief that individual and collective growth stems from understanding and embodying core values. The Psalm 119 Challenge is not just a competition, but a movement towards personal and societal transformation.</p>
+        <div class="image-placeholder">Manifesto Image</div>
+    </div>
+</section>
+
+<!-- First Year Section -->
+<section id="first-year" class="page-section">
+    <h2 class="section-title">The First Year</h2>
+    <div class="section-content">
+        <p>The inaugural year of the Psalm 119 National Values Challenge was a groundbreaking moment. Participants from diverse backgrounds came together, sharing stories, insights, and interpretations of values that bind humanity.</p>
+        <div class="image-placeholder">First Year Highlights</div>`
+    </div>
+</section>
+
+<!-- Subsequent Years Sections -->
+  <section id="second-year" class="page-section">
+    <h2 class="section-title">The Second Year</h2>
+    <div class="section-content">
+      <p>Building on the success of the first year, the second year saw increased participation and deeper exploration of national values. The challenge continued to evolve, creating more meaningful connections.</p>
+      <img src="/images /p3.jpg" alt="p3.jpg" class="image-placeholder">
+    </div>
+  </section>
+ 
+<section id="third-year" class="page-section">
+    <h2 class="section-title">The Third Year</h2>
+    <div class="section-content">
+        <p>The third year marked a significant milestone, with expanded outreach and more comprehensive engagement strategies. The challenge began to create lasting impact beyond the competition itself.</p>
+        <img src="/images /p1.jpg" alt="p1.jpg" class="image-placeholder">
+    </div>
+</section>
+
+<section id="fourth-year" class="page-section">
+    <h2 class="section-title">The Fourth Year</h2>
+    <div class="section-content">
+        <p>By the fourth year, the Psalm 119 National Values Challenge had become a beacon of hope and transformation, with a growing network of participants committed to personal and societal growth.</p>
+        <div class="image-placeholder">Fourth Year Celebration</div>
+    </div>
+</section>
+
+<!-- Prizes Section -->
+<section id="prizes" class="page-section">
+    <h2 class="section-title">The Prizes</h2>
+    <div class="section-content">
+        <p>Our prizes go beyond material rewards. They are symbolic recognitions of growth, understanding, and commitment to national values. Each award tells a story of personal transformation and community impact.</p>
+        <div class="image-placeholder">Prize Ceremony</div>
+    </div>
+</section>
+</div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bookContainer = document.querySelector('.book-container');
+            const content = document.querySelector('.content');
+
+            // Book opening animation
+            setTimeout(() => {
+                bookContainer.style.display = 'none';
+                content.classList.add('show');
+                
+                // Scroll-triggered animations
+                const sections = document.querySelectorAll('.page-section');
+                const observerOptions = {
+                    threshold: 0.1
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const title = entry.target.querySelector('.section-title');
+                            const content = entry.target.querySelector('.section-content');
+                            const image = entry.target.querySelector('.image-placeholder');
+
+                            title.classList.add('active');
+                            content.classList.add('active');
+                            image.classList.add('active');
+                        }
+                    });
+                }, observerOptions);
+
+                sections.forEach(section => {
+                    observer.observe(section);
+                });
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
