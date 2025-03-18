@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar Fix</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Mobile menu styling */
+    #nav-menu:not(.hidden) {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%; /* Below the header */
+      left: 0;
+      right: 0;
+      background-color: white; /* Match header background */
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Match shadow-md */
+      z-index: 10; /* Above other content */
+    }
+    #nav-menu a {
+      margin: 0.5rem 0; /* Vertical spacing */
+      text-align: center;
+    }
+    /* Adjust container padding on mobile */
+    @media (max-width: 768px) {
+      .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
+      <!-- Hamburger Button (visible on mobile only) -->
+      <button class="md:hidden text-2xl focus:outline-none" id="menu-toggle">
+        ☰
+      </button>
+      <!-- Nav Links -->
+      <nav class="hidden md:flex space-x-4 flex-1" id="nav-menu">
+        <a class="hover:text-gray-400 px-2" href="index.html">Home</a>
+        <a class="hover:text-gray-400 px-2" href="about.html">About Us</a>
+        <a class="hover:text-gray-400 px-2" href="testimonies.html">Testimonies</a>
+        <a class="hover:text-gray-400 px-2" href="contact.html">Contact</a>
+      </nav>
+      <!-- Buttons -->
+      <div class="space-x-4 mt-4 md:mt-0">
+        <button class="px-4 py-2 border border-blue-500 text-blue-500 rounded-full hover:bg-blue-500 hover:text-white">
+          Register Now
+        </button>
+        <button class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600">
+          Learn More
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Toggle Script -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
+    <main class="container mx-auto px-4 py-16">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4">Contact Us</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div>
+                <i class="fas fa-envelope text-4xl mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Email Us</h3>
+                <p>For any inquiries or further information, please reach out to us via email at <a href="mailto:Psalm119NationalValues@gmail.com" class="text-blue-500">Psalm119NationalValues@gmail.com</a>. We are here to assist you with any questions you may have regarding the challenge.</p>
+            </div>
+            <div>
+                <i class="fas fa-phone text-4xl mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Call Us</h3>
+                <p>If you prefer to speak with someone directly, feel free to call us at <a href="tel:+2348122673417" class="text-blue-500">+234 81 2267 3417</a>. Our team is available to help you with your questions and provide guidance on how to participate.</p>
+            </div>
+            <div>
+                <i class="fas fa-map-marker-alt text-4xl mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Visit Us</h3>
+                <p>You can also visit us at our office located at <strong>goDsHub 0.1 Oremetta, Ota 11226, Ogun State</strong>. We welcome visitors and are happy to discuss the challenge in person.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="font-semibold mb-4">About</h4>
+                    <ul>
+                        <li><a href="about.html" class="text-gray-600 hover:text-black">About Us</a></li>
+                        <li><a href="testimonies.html" class="text-gray-600 hover:text-black">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Participate</h4>
+                    <ul>
+                        <li><a href="#" class="text-gray-600 hover:text-black">How to Participate</a></li>
+                        <li><a href="contact.html" class="text-gray-600 hover:text-black">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Challenge</h4>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Subscribe to Updates</h4>
+                    <p class="mb-4">Stay informed about the latest news and updates from the Psalm 119 National Values Challenge.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Enter your email" class="px-4 py-2 border border-gray-300 rounded-l-full focus:outline-none">
+                        <button class="px-4 py-2 bg-blue-500 text-white rounded-r-full hover:bg-blue-600">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-8 border-t pt-4 text-center text-gray-600">
+                <p>© 2025 Psalm 119 National Values Challenge. All rights reserved.</p>
+                <div class="mt-4 space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-black">Terms and Conditions</a>
+                    <a href="#" class="text-gray-600 hover:text-black">Privacy Policy</a>
+                </div>
+                <div class="mt-4 space-x-4">
+                    <!-- Facebook -->
+                    <a href="https://web.facebook.com/KidsinspiringNation/" class="text-gray-600 hover:text-black" target="_blank">
+                      <i class="fab fa-facebook"></i>
+                    </a>
+                    <!-- Twitter -->
+                    <a href="https://x.com/kidsinspiringN?t=dUiNjp7mpY6bdeWpsIxMSw&s=09" class="text-gray-600 hover:text-black" target="_blank">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="https://www.youtube.com/@KidsInspiringNation" class="text-gray-600 hover:text-black" target="_blank">
+                      <i class="fab fa-youtube"></i>
+                    </a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
